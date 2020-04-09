@@ -24,121 +24,114 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
+        <?php 
+        if (isset($_SESSION["role"]))
+        { 
+          if ($_SESSION["role"] == "utilisateur" && $_SESSION['verif'] == 1)
+          {?>  <!-- je defini les pages que l'utilisateur peut voir selon son role dans la base de données -->
+            <li class="nav-item active">
+              <a class="nav-link" href="Jarditou3.php" title= "Accueil">Accueil<span class="sr-only">(current)</span></a>
+            </li>
+          <?php }else if ($_SESSION["role"] == "admin"){ ?>    
+          <!--si l'utilisateur est admin il ne verra pas la page d'accueil car le else est vide, jepourrais créer une page d'erreur connexion -->
+          <?php }  
+        } 
+        else 
+        {?>
+          <li class="nav-item active">
+              <a class="nav-link" href="<?= site_url(); ?>" title= "Accueil">Accueil<span class="sr-only">(current)</span></a>
+          </li>
+        <?php } ?>
 
-      <?php 
-                  
-                  if (isset($_SESSION["role"]))
-                  { 
-                      if ($_SESSION["role"] == "utilisateur" && $_SESSION['verif'] == 1)
-                      {?>  <!-- je defini les pages que l'utilisateur peut voir selon son role dans la base de données -->
-                        <li class="nav-item active">
-                          <a class="nav-link" href="Jarditou3.php" title= "Accueil">Accueil<span class="sr-only">(current)</span></a>
-                        </li>
-                          <?php }else if ($_SESSION["role"] == "admin"){ ?>    <!--si l'utilisateur est admin il ne verra pas la page d'accueil car le else est vide, jepourrais créer une page d'erreur connexion -->
-                     
-                  <?php }  } else {?>
-                  <li class="nav-item active">
-                      <a class="nav-link" href="Jarditou3.php" title= "Accueil">Accueil<span class="sr-only">(current)</span></a>
-                  </li>
-                  <?php } ?>
+        <?php 
+        if (isset($_SESSION["role"]))
+        {
+          if ($_SESSION["role"] == "admin")
+          {?>
+            <li class="nav-item">
+                <a class="nav-link" href="tableau.php">Produits</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="gestion_admin.php">gestion</a>
+            </li>
+          <?php 
+          } 
+          else if ($_SESSION["role"] == "utilisateur")
+          {?>
+            <li class="nav-item">
+                <a class="nav-link" href="produits_user.php">Produits</a>
+            </li>
+          <?php }
+        } 
+        else
+        {?>
+          <li class="nav-item">
+              <a class="nav-link" href="<?= site_url('produits/liste'); ?>">Produits</a>
+          </li>
+        <?php } 
 
-                  <?php 
-                                    
-                  if (isset($_SESSION["role"]))
-                  {
-                    if ($_SESSION["role"] == "admin"){?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="tableau.php">Produits</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="gestion_admin.php">gestion</a>
-                        </li>
-                    <?php } else if ($_SESSION["role"] == "utilisateur"){?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="produits_user.php">Produits</a>
-                        </li>
-                    <?php }
-                  } else {?>
-                  <li class="nav-item">
-                      <a class="nav-link" href="<?= site_url('produits/liste'); ?>">Produits</a>
-                  </li>
-                  <?php } ?>
+        // Condition accès page contact
+        if (isset($_SESSION["role"]))
+        {
 
-                  
-                  
-                  <?php 
-                  if (isset($_SESSION["role"]))
-                  {
+          if ($_SESSION["role"] == "utilisateur")
+          {?>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.php">Contact</a>
+            </li>
+          <?php } 
+        } 
+        else 
+        { 
+          // Ca n'affiche rien
+        }?>
 
-                  if ($_SESSION["role"] == "utilisateur"){?>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.php">Contact</a>
-                </li>
-                  <?php } } else { }?>
-
-                  <?php 
-                  if (isset($_SESSION["role"]))
-                  {
-                  if ($_SESSION["role"] == "admin"){?>
-                <li class="nav-item">
-                      <a class="nav-link" href="fiche_produit.php">Admin</a>
-                  </li>
-                  <?php } } else { }?>
-                  <li class="nav-item">
-                      <a class="nav-link" href="<?= site_url('produits/ajouter'); ?>">Ajouter un produit</a>
-                  </li>
-
-
-                  <?php 
-                  if (isset($_SESSION["role"]))
-                  {
-
-                  if ($_SESSION["role"] == "utilisateur" || $_SESSION["role"] == "admin")
-                      {?>
-                          <li class="nav-item">
-                            <a class="nav-link" href="logout.php">Deconnexion</a>
-                           </li>
-                      <?php } }else
-                      {?>
-                          <li class="nav-item">
-                            <a class="nav-link" href="inscription.php">Connexion</a>
-                           </li>
-                        <?php } ?>
-
-
-              </ul>
-              <span class="navbar-text">
-                <!-- si je veux retrer du texte sur la navbar je le rentre ici -->
-              </span>
-         
-              <?php
-
-              if(!empty ($_SESSION['login'])) {
-                  echo "<p class= text-light>Welcome, ".$_SESSION['login']."</p>";
-              }?>
-
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="../views/Jarditou3.php" title= "Accueil">Accueil</a>
-        </li>
+        <?php 
+        if (isset($_SESSION["role"]))
+        {
+          if ($_SESSION["role"] == "admin")
+          {?>
+            <li class="nav-item">
+                <a class="nav-link" href="fiche_produit.php">Admin</a>
+            </li>
+          <?php } 
+        } 
+        else 
+        { 
+          // Ca n'affiche rien
+        }?>
+        <!-- lien de navigation ajouter produit en attendant de gérer les rôles -->
         <li class="nav-item">
-            <a class="nav-link" href="../views/tableau.php">Produits</a>
+            <a class="nav-link" href="<?= site_url('produits/ajouter'); ?>">Ajouter un produit</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="gestion_admin.php">gestion</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../views/contact.php">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="fiche_produit.php">Admin</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">Deconnexion</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../views/inscription.php">Connexion</a>
-        </li> -->
+
+        <?php 
+        if (isset($_SESSION["role"]))
+        {
+          if ($_SESSION["role"] == "utilisateur" || $_SESSION["role"] == "admin")
+          {?>
+            <li class="nav-item">
+              <a class="nav-link" href="logout.php">Deconnexion</a>
+            </li>
+          <?php } 
+          }
+          else
+          {?>
+            <li class="nav-item">
+              <a class="nav-link" href="inscription.php">Connexion</a>
+            </li>
+          <?php } ?>
+
+
       </ul>
+        <span class="navbar-text">
+          <!-- si je veux retrer du texte sur la navbar je le rentre ici -->
+        </span>
+    
+      <?php
+      if(!empty ($_SESSION['login'])) {
+          echo "<p class= text-light>Welcome, ".$_SESSION['login']."</p>";
+      }?>
     </div>
   </nav>
   <img src="<?= base_url('assets/img/promotion.jpg'); ?>" class="img-fluid">
