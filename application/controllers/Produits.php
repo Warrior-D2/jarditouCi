@@ -23,7 +23,7 @@
             // $aViewProduits["liste_produits"] = $aListe;
             
             // On passe les tableaux en second argument de la méthode. Le "+" permet d'assigner plusieurs paramètres.
-            $this->load->view('jarditou3', $aViewProduits);
+            $this->load->view('jarditou3');
         }
 
         public function liste()
