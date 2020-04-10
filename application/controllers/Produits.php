@@ -107,11 +107,9 @@
             }
         }
 
-        // --------- Modif produits ---------
+        // --------- Modif produits --------- 
         public function modifier($id)
         {
-            
-        // $this->load->database();
         // Requête de sélection de l'enregistrement souhaité, ici le produit 7 
         $produit = $this->db->query("SELECT * FROM produits WHERE pro_id= ?", $id);
         $aView["produit"] = $produit->row(); // première ligne du résultat
@@ -120,9 +118,6 @@
         { // 2ème appel de la page: traitement du formulaire
 
             $data = $this->input->post();
-            
-            // défini l'heure par defaut sur europe /paris
-            date_default_timezone_set("Europe/Paris");
             // Ajout d'une date d'ajout que le formulaire ne contient pas
             $data["pro_d_modif"] = date("Y-m-d h:i:s");
 
@@ -136,7 +131,7 @@
             $this->form_validation->set_rules("pro_stock", "Stock", "required|integer", array("required" => "Veuillez renseigner un %s.", "integer"=>"Ce champs ne doit contenir que des chiffres entiers."));                
             $this->form_validation->set_rules("pro_couleur", "Couleur", "required|alpha", array("required" => "Veuillez renseigner une %s.", "alpha"=>"Ce champs ne doit contenir que des lettres."));                
             //$this->form_validation->set_rules("pro_photo", "Extension", "required", array("required" => "Veuillez renseigner une %s."));                
-            //$this->form_validation->set_rules("pro_bloque", "Bloque", "required", array("required" => "Veuillez cocher une des deux case."));
+            $this->form_validation->set_rules("pro_bloque", "Bloque", "required", array("required" => "Veuillez cocher une des deux case."));
 
 
             if ($this->form_validation->run() == FALSE)
@@ -146,14 +141,12 @@
             else
            { // La validation a réussi, nos valeurs sont bonnes, on peut modifier en base  
             $this->db->where('pro_id', $id );
-            $insert_query = $this->db->update('produits', $data);
-            $insert_query = str_replace('INSERT INTO','INSERT IGNORE INTO',$insert_query);
-            $this->db->query($insert_query);
-                // $this->db->update('produits', $data);
+            unset($data['pro_id']);
+                $this->db->update('produits', $data);
                 redirect("produits/liste");
             }
         }
-        else 
+        else
         { // 1er appel de la page: affichage du formulaire             
             $this->load->view('details', $aView);
         }
