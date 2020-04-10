@@ -18,11 +18,15 @@ $title ='Produits';
                         </button>
                     </h2>
                     <p class="prixTab col-4 text-center"><?php echo $row->pro_prix . "€"; ?></p>
-                    <form class="marque col-4 text-center" action="../views/details.php" method="post">
+                    <!-- Test -->
+                    <a href="<?= site_url('produits/modifier/'.$row->pro_id)?>">Modif</a>
+
+
+                    <!-- <form class="marque col-4 text-center" href="<?= site_url('produits/modifier')?>" method="post">
                         <input type="hidden" name="proID" value="<?php echo $row->pro_id; ?>">
-                        <!-- je met un bouton hidden pour recup les infos en fonction de l'id  que j'ai choisi et qui recuperera sa valeur -->
+                        <!-- je met un bouton hidden pour recup les infos en fonction de l'id  que j'ai choisi et qui recuperera sa valeur <<
                         <input class="btn btn-link" type="submit" name="Detail" value="modifier">
-                    </form>
+                    </form> -->
                 </div>
                 <div id="collapse<?php echo $row->pro_id; ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="row card-body">

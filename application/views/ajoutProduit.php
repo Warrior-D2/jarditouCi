@@ -2,7 +2,7 @@
 $title ='Produits';
 ?>
 
-<?php ob_start(); ?>
+<?php ob_start(); ?>  <!-- ref au template (template.php) -->
 
 <?php echo form_open(); ?> 
 
@@ -109,7 +109,8 @@ $title ='Produits';
         <label class="form-check-label" for="inlineCheckbox2">Voulez vous ajouter ce produit?</label>
     </div>
 
-    <br>
+
+
     <button type="submit" class="btn btn-outline-success">Ajouter</button>
     <button type="reset" class="btn btn-outline-danger">Refuser</button>
 

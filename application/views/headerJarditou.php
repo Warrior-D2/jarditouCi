@@ -35,7 +35,7 @@
                           <a class="nav-link" href="Jarditou3.php" title= "Accueil">Accueil<span class="sr-only">(current)</span></a>
                         </li>
                           <?php }else if ($_SESSION["role"] == "admin"){ ?>    <!--si l'utilisateur est admin il ne verra pas la page d'accueil car le else est vide, jepourrais créer une page d'erreur connexion -->
-                     
+                    
                   <?php }  } else {?>
                   <li class="nav-item active">
                       <a class="nav-link" href="Jarditou3.php" title= "Accueil">Accueil<span class="sr-only">(current)</span></a>
@@ -43,7 +43,7 @@
                   <?php } ?>
 
                   <?php 
-                                    
+
                   if (isset($_SESSION["role"]))
                   {
                     if ($_SESSION["role"] == "admin"){?>
@@ -64,8 +64,8 @@
                   </li>
                   <?php } ?>
 
-                  
-                  
+
+
                   <?php 
                   if (isset($_SESSION["role"]))
                   {
@@ -97,12 +97,12 @@
                       {?>
                           <li class="nav-item">
                             <a class="nav-link" href="logout.php">Deconnexion</a>
-                           </li>
+                          </li>
                       <?php } }else
                       {?>
                           <li class="nav-item">
                             <a class="nav-link" href="inscription.php">Connexion</a>
-                           </li>
+                          </li>
                         <?php } ?>
 
 
@@ -110,7 +110,7 @@
               <span class="navbar-text">
                 <!-- si je veux retrer du texte sur la navbar je le rentre ici -->
               </span>
-         
+
               <?php
 
               if(!empty ($_SESSION['login'])) {

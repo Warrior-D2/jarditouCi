@@ -106,4 +106,56 @@
                 $this->load->view('ajoutProduit', $aviewCategories);  // Chargement de la vue 'ajout.php'
             }
         }
+
+        // --------- Modif produits ---------
+        public function modifier($id)
+        {
+
+        // Requête de sélection de l'enregistrement souhaité, ici le produit 7 
+        $produit = $this->db->query("SELECT * FROM produits WHERE pro_id= ?", $id);
+        $aView["produit"] = $produit->row(); // première ligne du résultat
+
+        if ($this->input->post()) 
+        { // 2ème appel de la page: traitement du formulaire
+
+            $data = $this->input->post();
+            
+
+            // Ajout d'une date d'ajout que le formulaire ne contient pas
+            $data["pro_d_modif"] = date("Y-m-d h:i:s");
+
+            $this->form_validation->set_rules("pro_ref", "Référence", "required|min_length[6]|is_unique[produits.pro_ref]", 
+            array("required" => "Veuillez renseigner une %s.",  "min_length" => "La %s doit avoir longueur minimum de 6 caractères."));                  
+            $this->form_validation->set_rules("pro_libelle", "Libellé", "required|regex_match[/^[a-z0-9_\-áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ]*$/i]", 
+            array("required" => "Veuillez renseigner un %s.", "regex_match"=>"Chiffres, lettres, '_' et '-' uniquement."));                
+            $this->form_validation->set_rules("pro_cat_id", "Catégorie", "required", array("required" => "Veuillez sélectionner une %s."));                
+            $this->form_validation->set_rules("pro_description", "Description", "required", array("required" => "Veuillez renseigner une %s."));                
+            $this->form_validation->set_rules("pro_prix", "Prix", "required|decimal", array("required" => "Veuillez renseigner un %s.", "decimal"=>"Ce champs ne doit être un chiffre déciaml (Ex: 25.00)."));                
+            $this->form_validation->set_rules("pro_stock", "Stock", "required|integer", array("required" => "Veuillez renseigner un %s.", "integer"=>"Ce champs ne doit contenir que des chiffres entiers."));                
+            $this->form_validation->set_rules("pro_couleur", "Couleur", "required|alpha", array("required" => "Veuillez renseigner une %s.", "alpha"=>"Ce champs ne doit contenir que des lettres."));                
+            //$this->form_validation->set_rules("pro_photo", "Extension", "required", array("required" => "Veuillez renseigner une %s."));                
+            //$this->form_validation->set_rules("pro_bloque", "Bloque", "required", array("required" => "Veuillez cocher une des deux case."));
+
+
+            if ($this->form_validation->run() == FALSE)
+           { // Echec de la validation, on réaffiche la vue formulaire 
+                $this->load->view('details', $aView);
+            }
+            else
+           { // La validation a réussi, nos valeurs sont bonnes, on peut modifier en base  
+            $insert_query = $this->db->update('produits', $data);
+            $insert_query = str_replace('INSERT INTO','INSERT IGNORE INTO',$insert_query);
+            $this->db->query($insert_query);
+                // $this->db->update('produits', $data);
+                $this->db->where('pro_id', $id );
+                redirect("produits/liste");
+            }
+        } 
+        else 
+        { // 1er appel de la page: affichage du formulaire             
+            $this->load->view('details', $aView);
+        }
+    } // -- modifier()
+
+
     }
