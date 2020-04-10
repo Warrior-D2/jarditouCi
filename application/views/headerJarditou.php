@@ -7,7 +7,6 @@
               alt="Logo du site : Une femme tenant une brouette" title="Logo du site Jarditou"></a>
     </div>
       <?php
-        date_default_timezone_set("Europe/Paris");
         echo "Nous sommes le  ".date("z"). "ème jour de l'année"; // Affiche la date du jour
         echo ". Il est " . date("H:i:s") ; // Affiche l'heure
         echo " "

@@ -11,7 +11,9 @@
     <body>
         
         <div class="container">
-        <?php require('headerJarditou.php');?>
+        <?php 
+        date_default_timezone_set("Europe/Paris");
+        require('headerJarditou.php');?>
             <?= $content ?>
         <?php require('footer.php');?>
         </div>
