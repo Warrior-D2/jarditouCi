@@ -150,6 +150,12 @@
         { // 1er appel de la page: affichage du formulaire             
             $this->load->view('details', $aView);
         }
-    } // -- modifier()
+        } // -- modifier()
 
+
+        public function supprimer($id)
+        {
+            $this->db->query("DELETE FROM produits WHERE pro_id=?", $id);
+            redirect("produits/liste");
+        }
     }

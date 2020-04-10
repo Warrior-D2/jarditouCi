@@ -145,7 +145,8 @@ $title ='Produits';
       <div class="modal-footer">
         <input type="hidden" name="DeleteButton" value="<?php echo $produit->pro_id; ?>"> <!-- Bouton caché avec la valeur de pro_id -->
         <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-        <input type="submit" class="btn btn-primary" value="Supprimer Produit">
+        <!-- <input type="submit" class="btn btn-primary" value="Supprimer Produit"> -->
+        <a href="<?= site_url("produits/supprimer/".$produit->pro_id); ?>" role="button" >Supprimer</a>
       </div>
     </div>
   </div>
