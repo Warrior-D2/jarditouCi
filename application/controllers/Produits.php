@@ -28,15 +28,15 @@
 
         public function liste()
         {
-            // // Exemple pour créer la liste de produits jarditou
-            // // Charge la librairie 'database' et se connecte à la base de données (création d'un objet db)
-            // $this->load->database();
             
-            // Exécute la requête 
-            $results = $this->db->query("SELECT * FROM produits");  
-            
-            // Récupération des résultats    
-            $aListe = $results->result();   
+            // Chargement du modèle 'Produits_model'
+            $this->load->model('Produits_model');
+
+            /* On appelle la méthode liste() du modèle,
+            * qui retourne le tableau de résultat ici affecté dans la variable $aListe (un tableau) 
+            * remarque la syntaxe $this->nomModele->methode()
+            */
+            $aListe = $this->Produits_model->liste();            
             
             // Ajoute des résultats de la requête au tableau des variables à transmettre à la vue 
             $aViewProduits["liste_produits"] = $aListe;
