@@ -2,7 +2,7 @@
 $title ='Produits';
 ?>
 
-<?php ob_start(); ?>
+<?php ob_start(); ?>  <!-- ref au template (template.php) -->
 
 <?php echo form_open(); ?> 
 

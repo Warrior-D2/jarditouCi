@@ -105,6 +105,7 @@
             <a class="nav-link" href="<?= site_url('produits/ajouter'); ?>">Ajouter un produit</a>
         </li>
 
+
         <?php 
         if (isset($_SESSION["role"]))
         {
@@ -121,7 +122,6 @@
               <a class="nav-link" href="inscription.php">Connexion</a>
             </li>
           <?php } ?>
-
 
       </ul>
         <span class="navbar-text">

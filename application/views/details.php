@@ -1,71 +1,69 @@
 <?php
-include("assets/php/headerJarditou.php");
-
- $res = $_POST['proID'];  //je declare une variable res pour sauvegarder la valeur de mon input hidden et pour pouvoir la reutiliser dans ma requete
-
-require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
-   $db = connexionBase(); // Appel de la fonction de connexion
-   $requete = 'SELECT *  FROM produits WHERE pro_id ='.$res;
-   $result = $db->query($requete);
-   // Renvoi de l'enregistrement sous forme d'un objet
-   $produit = $result->fetch(PDO::FETCH_OBJ);
+$title ='Produits';
 ?>
 
-<body>
-    <form action="script_modif.php" method="POST">
+<?php ob_start(); ?>
+
+<?php echo form_open(); ?> 
 
 
 <div class="form-group">
     <label for="formGroupExampleInput">ID</label>
     <input type="text" class="form-control" name="pro_id"id="pro_id" value="<?php echo $produit->pro_id; ?>" placeholder="" readonly>
-    <span id="error_pro_id"></span>
-</div>
+  </div>
 <div class="form-group">
     <label for="formGroupExampleInput2">Réference</label>
-    <input type="text" class="form-control" name="pro_ref" id="pro_ref" value="<?php echo $produit->pro_ref; ?>" placeholder="">
-    <span id="error_pro_ref"></span>
+    <input type="text" class="form-control" name="pro_ref" id="pro_ref" value="<?php echo $produit->pro_ref; ?>">
+    <?php echo form_error('pro_ref');?>
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Catégorie</label>
-    <input type="text" class="form-control"name="pro_cat" id="pro_cat_id" value="<?php echo $produit->pro_cat_id; ?>" placeholder="">
-    <span id="error_pro_cat"></span>
+    <input type="text" class="form-control"name="pro_cat_id" id="pro_cat_id" value="<?php echo $produit->pro_cat_id; ?>">
+    <?php echo form_error('pro_cat_id');?>
+
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Libellé</label>
     <input type="text" class="form-control" name="pro_libelle" id="pro_libelle" value="<?php echo $produit->pro_libelle; ?>" placeholder="">
-    <span id="error_pro_libelle"></span>
+    <?php echo form_error('pro_libelle');?>
+
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Description</label>
     <input type="text" class="form-control" name="pro_description" id="pro_description" value="<?php echo $produit->pro_description; ?>" placeholder="">
-    <span id="error_pro_description"></span>
+    <?php echo form_error('pro_description');?>
+
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Prix</label>
     <input type="text" class="form-control" name="pro_prix" id="pro_prix" value="<?php echo $produit->pro_prix; ?>"placeholder="">
-    <span id="error_pro_prix"></span>
+    <?php echo form_error('pro_prix');?>
+
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Stock</label>
     <input type="text" class="form-control" name="pro_stock" id="pro_stock" value="<?php echo $produit->pro_stock; ?>" placeholder="">
-    <span id="error_pro_stock"></span>
+    <?php echo form_error('pro_stock');?>
+
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Couleur</label>
-    <input type="text" class="form-control" name="couleur" id="couleur" value="<?php echo $produit->pro_couleur; ?>"placeholder="">
-    <span id="error_couleur"></span>
+    <input type="text" class="form-control" name="pro_couleur" id="couleur" value="<?php echo $produit->pro_couleur; ?>"placeholder="">
+    <?php echo form_error('pro_couleur');?>
+
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Extension</label>
-    <input type="text" class="form-control" name="photo" id="photo" value="<?php echo $produit->pro_photo; ?>"placeholder="Ex: jpg, png, ...">
-    <span id="error_photo"></span>
+    <input type="text" class="form-control" name="pro_photo" id="photo" value="<?php echo $produit->pro_photo; ?>"placeholder="Ex: jpg, png, ...">
+    <?php echo form_error('pro_photo');?>
+
 </div>
 
 <!-- <div class="form-group">
@@ -95,15 +93,16 @@ require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
 <!-- si je veux que ma mention bloqué ait une valeur numerique je fais ce qui suit -->
 <div class="form-group">
     <label for="formGroupExampleInput2">Bloquer Produit</label>
-    <input type="texte" class="form-control" name="bloque" value="<?php echo $produit->pro_bloque; ?>"id="bloque">
-    <span id="error_bloque"></span>
+    <input type="texte" class="form-control" name="pro_bloque" value="<?php echo $produit->pro_bloque; ?>"id="bloque">
+    <?php echo form_error('pro_bloque');?>
+
 
 </div>
-<br>
-<div class="form-check form-check-inline mb-3 font">
+
+<!-- <div class="form-check form-check-inline mb-3 font">
     <input class="form-check-input font" type="radio" name="accepte" id="accepte" required>
     <label class="form-check-label" for="inlineCheckbox2">Voulez vous modifier ce produit?</label>
-</div>
+</div> -->
 
 <br>
 <button type="submit" class="btn btn-outline-success">Modifier</button>
@@ -146,7 +145,7 @@ require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
       <div class="modal-footer">
         <input type="hidden" name="DeleteButton" value="<?php echo $produit->pro_id; ?>"> <!-- Bouton caché avec la valeur de pro_id -->
         <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-        <input type="submit" class="btn btn-primary" value="Supprimer Produit"</button>
+        <input type="submit" class="btn btn-primary" value="Supprimer Produit">
       </div>
     </div>
   </div>
@@ -154,6 +153,6 @@ require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
 
 </form>
 
-<?php
-include("assets/php/footer.php")
-?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); ?>
