@@ -107,9 +107,9 @@
          }
         }
         
-        public function modifier()
         public function modifier($id)
         {
+                    
 
                     // Requête de sélection de l'enregistrement souhaité, ici le produit 7 
                     $produit = $this->db->query("SELECT * FROM produits WHERE pro_id= ?", $id);
