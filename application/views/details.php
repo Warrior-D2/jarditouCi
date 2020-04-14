@@ -4,18 +4,20 @@ $title ='Produits';
 
 <?php ob_start(); ?>
 
-<?php echo form_open(); ?> 
+<?php echo form_open_multipart(); ?> 
 
 
 <div class="form-group">
     <label for="formGroupExampleInput">ID</label>
     <input type="text" class="form-control" name="pro_id"id="pro_id" value="<?php echo $produit->pro_id; ?>" placeholder="" readonly>
   </div>
+
 <div class="form-group">
     <label for="formGroupExampleInput2">Réference</label>
     <input type="text" class="form-control" name="pro_ref" id="pro_ref" value="<?php echo $produit->pro_ref; ?>">
     <?php echo form_error('pro_ref');?>
 </div>
+
 <div class="form-group">
     <label for="formGroupExampleInput2">Catégorie</label>
     <input type="text" class="form-control"name="pro_cat_id" id="pro_cat_id" value="<?php echo $produit->pro_cat_id; ?>">
@@ -59,11 +61,36 @@ $title ='Produits';
 </div>
 
 <div class="form-group">
-    <label for="formGroupExampleInput2">Extension</label>
-    <input type="text" class="form-control" name="pro_photo" id="photo" value="<?php echo $produit->pro_photo; ?>"placeholder="Ex: jpg, png, ...">
+    <label for="formGroupExampleInput2">Photo</label>
+    <!-- <img class="img-thumbnail" src="<?= base_url("assets/img/".$produit->pro_id.".".$produit->pro_photo); ?>" alt="photo associer à l'id"> -->
+    <input type="file" name="pro_photo" id="pro_photo" class="form-control" >
     <?php echo form_error('pro_photo');?>
-
 </div>
+
+<!-- <div class="form-group">
+    <label for="formGroupExampleInput2">Date d'ajout</label>
+    <input type="date" class="form-control" name="date_ajout" id="date_ajout" placeholder="jj-mm-aaaa">
+    <span id="error_date_ajout"></span>
+</div> -->
+<!-- <div class="form-group">
+    <label for="formGroupExampleInput2">Date de modification</label>
+    <input type="date" class="form-control" name="date_modif" id="date_modif" placeholder="jj-mm-aaaa">
+    <span id="error_date_modif"></span>
+</div> -->
+
+<!-- je defini des valeurs 1 et 0 pour ma mention bloque, ainsi je peux avoir un choix et oui et non pour mes produits au moment de choisir -->
+<!-- <div class="form-check form-check-inline mb-3 font">
+    <label class="form-check-label" for="inlineCheckbox2">Voulez vous bloquer ce produit?</label>
+</div>
+
+  <div class="form-check form-check-inline">
+      <input class="radI form-check-input ml-1 mb-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1"> <!-- Value = 1 -->
+      <!-- <label class="radI form-check-label ml-2 mb-2" for="inlineRadio1"><h5 class="largContact2">Oui</h5></label> <!-- Value = 0 -->
+  <!-- </div>
+  <div class="form-check form-check-inline mb-3">
+      <input class="radI form-check-input ml-5 mb-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0" checked>
+      <label class="radI form-check-label ml-2 mb-2" for="inlineRadio1"><h5 class="largContact2">Non </h5></label>
+  </div> -->
 <!-- si je veux que ma mention bloqué ait une valeur numerique je fais ce qui suit -->
 <div class="form-group">
     <label for="formGroupExampleInput2">Bloquer Produit</label>
