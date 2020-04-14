@@ -9,59 +9,59 @@ $title ='Produits';
 
 <div class="form-group">
     <label for="formGroupExampleInput">ID</label>
-    <input type="text" class="form-control" name="pro_id"id="pro_id" value="<?php echo set_value('pro_id'); ?>" placeholder="" readonly>
+    <input type="text" class="form-control" name="pro_id"id="pro_id" value="<?php echo set_value('pro_id', $produit->pro_id); ?>" placeholder="" readonly>
   </div>
 <div class="form-group">
     <label for="formGroupExampleInput2">Réference</label>
-    <input type="text" class="form-control" name="pro_ref" id="pro_ref" value="<?php echo set_value('pro_ref'); ?>">
+    <input type="text" class="form-control" name="pro_ref" id="pro_ref" value="<?php echo set_value('pro_ref', $produit->pro_ref); ?>">
     <?php echo form_error('pro_ref');?>
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Catégorie</label>
-    <input type="text" class="form-control"name="pro_cat" id="pro_cat_id" value="<?php echo set_value('pro_cat_id'); ?>">
+    <input type="text" class="form-control"name="pro_cat" id="pro_cat_id" value="<?php echo set_value('pro_cat_id', $produit->pro_cat_id); ?>">
     <?php echo form_error('pro_cat_id');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Libellé</label>
-    <input type="text" class="form-control" name="pro_libelle" id="pro_libelle" value="<?php echo set_value('pro_libelle'); ?>" placeholder="">
+    <input type="text" class="form-control" name="pro_libelle" id="pro_libelle" value="<?php echo set_value('pro_libelle',$produit->pro_libelle); ?>" placeholder="">
     <?php echo form_error('pro_libelle');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Description</label>
-    <input type="text" class="form-control" name="pro_description" id="pro_description" value="<?php echo set_value('pro_description'); ?>" placeholder="">
+    <input type="text" class="form-control" name="pro_description" id="pro_description" value="<?php echo set_value('pro_description', $produit->pro_description); ?>" placeholder="">
     <?php echo form_error('pro_description');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Prix</label>
-    <input type="text" class="form-control" name="pro_prix" id="pro_prix" value="<?php echo set_value ('pro_prix'); ?>"placeholder="">
+    <input type="text" class="form-control" name="pro_prix" id="pro_prix" value="<?php echo set_value ('pro_prix', $produit->pro_prix); ?>"placeholder="">
     <?php echo form_error('pro_prix');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Stock</label>
-    <input type="text" class="form-control" name="pro_stock" id="pro_stock" value="<?php echo set_value('pro_stock'); ?>" placeholder="">
+    <input type="text" class="form-control" name="pro_stock" id="pro_stock" value="<?php echo set_value('pro_stock', $produit->pro_stock); ?>" placeholder="">
     <?php echo form_error('pro_stock');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Couleur</label>
-    <input type="text" class="form-control" name="couleur" id="couleur" value="<?php echo set_value('pro_couleur'); ?>"placeholder="">
+    <input type="text" class="form-control" name="couleur" id="couleur" value="<?php echo set_value('pro_couleur', $produit->pro_couleur); ?>"placeholder="">
     <?php echo form_error('pro_couleur');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Extension</label>
-    <input type="text" class="form-control" name="photo" id="photo" value="<?php echo set_value('pro_photo'); ?>"placeholder="Ex: jpg, png, ...">
+    <input type="text" class="form-control" name="photo" id="photo" value="<?php echo set_value('pro_photo', $produit->pro_photo); ?>"placeholder="Ex: jpg, png, ...">
     <?php echo form_error('pro_photo');?>
 
 </div>
@@ -93,7 +93,7 @@ $title ='Produits';
 <!-- si je veux que ma mention bloqué ait une valeur numerique je fais ce qui suit -->
 <div class="form-group">
     <label for="formGroupExampleInput2">Bloquer Produit</label>
-    <input type="texte" class="form-control" name="bloque" value="<?php echo set_value('pro_bloque'); ?>"id="bloque">
+    <input type="texte" class="form-control" name="bloque" value="<?php echo set_value('pro_bloque', $produit->pro_bloque); ?>"id="bloque">
     <?php echo form_error('pro_bloque');?>
 
 
