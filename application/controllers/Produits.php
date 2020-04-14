@@ -126,7 +126,6 @@
                     }
                     else
                     { // Succès, on redirige sur la liste 
-                        $this->db->insert('produits', $data); //génère et exécute une requête insert, le tableau $data contient les paramètres de la requête.
                         redirect("produits/liste"); //redirige le navigateur vers la méthode liste du contrôleur produits. La méthode redirect() est disponible via le helper url.
                     }
                 }     
@@ -229,5 +228,10 @@
         $this->db->delete('produits');
         //on redirige vers la liste des produits
         redirect("produits/liste");
+    }
+
+    public function inscription()
+    {
+        $this->load->view('inscription');
     }
 }

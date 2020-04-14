@@ -1,3 +1,7 @@
+<?php 
+session_start(); 
+date_default_timezone_set("Europe/Paris");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,9 +15,7 @@
     <body>
         
         <div class="container">
-        <?php 
-        date_default_timezone_set("Europe/Paris");
-        require('headerJarditou.php');?>
+        <?php require('headerJarditou.php');?>
             <?= $content ?>
         <?php require('footer.php');?>
         </div>

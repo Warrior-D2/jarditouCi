@@ -118,7 +118,7 @@
           else
           {?>
             <li class="nav-item">
-              <a class="nav-link" href="inscription.php">Connexion</a>
+              <a class="nav-link" href="<?= site_url('Produits/inscription'); ?>">Connexion</a>
             </li>
           <?php } ?>
 
