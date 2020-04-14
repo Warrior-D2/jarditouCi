@@ -3,7 +3,7 @@
   <div class="row">
     <!-- LOGO -->
     <div class="col-lg-4 col-md-4 col-sm-6 text-center">
-      <a href="jarditou3.php"><img src="<?= base_url('..assets/img/jarditou_logo.jpg'); ?>" id="logo"
+      <a href="jarditou3.php"><img src="<?= base_url('assets/img/jarditou_logo.jpg'); ?>" id="logo"
               alt="Logo du site : Une femme tenant une brouette" title="Logo du site Jarditou"></a>
     </div>
       <?php
