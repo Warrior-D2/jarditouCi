@@ -100,11 +100,11 @@
                         $this->db->insert('produits', $data); //génère et exécute une requête insert, le tableau $data contient les paramètres de la requête.
                         redirect("produits/liste"); //redirige le navigateur vers la méthode liste du contrôleur produits. La méthode redirect() est disponible via le helper url.
                     }     
-            } 
+            }
             else
             { // 1er appel de la page: affichage du formulaire
                 $this->load->view('ajoutProduit', $aviewCategories);  // Chargement de la vue 'ajout.php'
-            }
+         }
         }
 
         // --------- Modif produits --------- 
@@ -151,5 +151,6 @@
             $this->load->view('details', $aView);
         }
     } // -- modifier()
+
 
     }
