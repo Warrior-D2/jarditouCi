@@ -230,8 +230,4 @@
         redirect("produits/liste");
     }
 
-    public function inscription()
-    {
-        $this->load->view('inscription');
-    }
 }
