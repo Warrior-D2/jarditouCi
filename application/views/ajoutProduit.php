@@ -47,16 +47,12 @@ $title ='Produits';
         <?php echo form_error('pro_stock'); ?>
     </div>
 
-
     <div class="form-group">
         <label id="colFormLabel" class="col-lg-3 col-md-2 col-form-label "> photo : *</label>
         <input type="file" class="form-control" name="pro_photo" id="pro_photo" value="<?php echo set_value('pro_photo'); ?>">
         <?php echo form_error('pro_photo'); ?>
     </div>
     
-
-
-
     <div class="form-group row">
         <label id="colFormLabel" class="col-lg-2 col-md-2 col-form-label font">Produit bloqué : </label>
         <div class="col-lg-4 col-md-4">

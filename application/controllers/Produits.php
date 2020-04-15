@@ -55,7 +55,7 @@
             if ($this->input->post()) 
             { // 2ème appel de la page: traitement du formulaire
                 
-                $data = $this->input->post(); //permet de récupérer en une seule fois toutes les données envoyées par le formulaire. Equivaut au tableau $_POST en PHP natif.
+                $data = $this->input->post(NULL, TRUE); //permet de récupérer en une seule fois toutes les données envoyées par le formulaire. Equivaut au tableau $_POST en PHP natif.
                 
                 // ------------------------------ IMPORTANT ------------------------------
                 // L'utilisation de $this->db->insert('produits', $data); nécessite que le nom des colonnes que le nom des colonnes soit identiques aux attributs "name"
@@ -117,7 +117,7 @@
         if ($this->input->post()) 
         { // 2ème appel de la page: traitement du formulaire
 
-            $data = $this->input->post();
+            $data = $this->input->post(NULL, TRUE);
             // Ajout d'une date d'ajout que le formulaire ne contient pas
             $data["pro_d_modif"] = date("Y-m-d h:i:s");
 
