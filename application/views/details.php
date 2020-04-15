@@ -62,7 +62,6 @@ $title ='Produits';
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Photo</label>
-    <!-- <img class="img-thumbnail" src="<?= base_url("assets/img/".$produit->pro_id.".".$produit->pro_photo); ?>" alt="photo associer à l'id"> -->
     <input type="file" name="pro_photo" id="pro_photo" class="form-control" >
     <?php echo form_error('pro_photo');?>
 </div>
