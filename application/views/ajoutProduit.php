@@ -4,7 +4,7 @@ $title ='Produits';
 
 <?php ob_start(); ?>  <!-- ref au template (template.php) -->
 
-<?php echo form_open_multipart(); ?> 
+<?php echo form_open_multipart();  ?> 
 
     <div class="form-group">
         <label id="colFormLabel" class="col-lg-3 col-form-label ">Référence produit : *</label>
@@ -47,12 +47,26 @@ $title ='Produits';
         <?php echo form_error('pro_stock'); ?>
     </div>
 
+<<<<<<< HEAD
+=======
     <div class="form-group">
-        <label id="colFormLabel" class="col-lg-3 col-md-2 col-form-label "> photo : *</label>
-        <input type="file" class="form-control" name="pro_photo" id="pro_photo" value="<?php echo set_value('pro_photo'); ?>">
+        <label id="colFormLabel" class="col-lg-3 col-md-2 col-form-label ">Couleur : *</label>
+        <input type="text" class="form-control" name="pro_couleur" id="pro_couleur" value="<?php echo set_value('pro_couleur'); ?>">
+        <?php echo form_error('pro_couleur'); ?>
+    </div>
+
+>>>>>>> 79c1a2357ab3952c230bd60bdc797681ef4b7ac6
+    <div class="form-group">
+        <label id="colFormLabel" class="col-lg-3 col-md-2 col-form-label ">Photo : *</label>
+        <input type="file" class="form-control" name="pro_photo" id="pro_photo" placeholder="Ex: jpg, png, ..." value="<?php echo set_value('pro_photo'); ?>">
         <?php echo form_error('pro_photo'); ?>
     </div>
+<<<<<<< HEAD
     
+=======
+
+
+>>>>>>> 79c1a2357ab3952c230bd60bdc797681ef4b7ac6
     <div class="form-group row">
         <label id="colFormLabel" class="col-lg-2 col-md-2 col-form-label font">Produit bloqué : </label>
         <div class="col-lg-4 col-md-4">

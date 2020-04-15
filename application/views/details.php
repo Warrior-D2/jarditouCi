@@ -4,70 +4,96 @@ $title ='Produits';
 
 <?php ob_start(); ?>
 
-<?php echo form_open(); ?> 
+<?php echo form_open_multipart(); ?> 
 
 
 <div class="form-group">
     <label for="formGroupExampleInput">ID</label>
-    <input type="text" class="form-control" name="pro_id"id="pro_id" value="<?php echo $produit->pro_id; ?>" placeholder="" readonly>
+    <input type="text" class="form-control" name="pro_id"id="pro_id" value="<?php  echo set_value('pro_id' $produit->pro_id); ?>" placeholder="" readonly>
   </div>
+
 <div class="form-group">
     <label for="formGroupExampleInput2">Réference</label>
-    <input type="text" class="form-control" name="pro_ref" id="pro_ref" value="<?php echo $produit->pro_ref; ?>">
+    <input type="text" class="form-control" name="pro_ref" id="pro_ref" value="<?php echo set_value('pro_ref', $produit->pro_ref); ?>">
     <?php echo form_error('pro_ref');?>
 </div>
+
 <div class="form-group">
     <label for="formGroupExampleInput2">Catégorie</label>
-    <input type="text" class="form-control"name="pro_cat_id" id="pro_cat_id" value="<?php echo $produit->pro_cat_id; ?>">
+    <input type="text" class="form-control"name="pro_cat_id" id="pro_cat_id" value="<?php echo set_value('pro_cat_id', $produit->pro_cat_id); ?>">
     <?php echo form_error('pro_cat_id');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Libellé</label>
-    <input type="text" class="form-control" name="pro_libelle" id="pro_libelle" value="<?php echo $produit->pro_libelle; ?>" placeholder="">
+    <input type="text" class="form-control" name="pro_libelle" id="pro_libelle" value="<?php echo set_value('pro_libelle', $produit->pro_libelle); ?>" placeholder="">
     <?php echo form_error('pro_libelle');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Description</label>
-    <input type="text" class="form-control" name="pro_description" id="pro_description" value="<?php echo $produit->pro_description; ?>" placeholder="">
+    <input type="text" class="form-control" name="pro_description" id="pro_description" value="<?php echo set_value('pro_description', $produit->pro_description); ?>" placeholder="">
     <?php echo form_error('pro_description');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Prix</label>
-    <input type="text" class="form-control" name="pro_prix" id="pro_prix" value="<?php echo $produit->pro_prix; ?>"placeholder="">
+    <input type="text" class="form-control" name="pro_prix" id="pro_prix" value="<?php echo set_value('pro_prix', $produit->pro_prix); ?>"placeholder="">
     <?php echo form_error('pro_prix');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Stock</label>
-    <input type="text" class="form-control" name="pro_stock" id="pro_stock" value="<?php echo $produit->pro_stock; ?>" placeholder="">
+    <input type="text" class="form-control" name="pro_stock" id="pro_stock" value="<?php echo set_value('pro_stock', $produit->pro_stock); ?>" placeholder="">
     <?php echo form_error('pro_stock');?>
 
 </div>
 
 <div class="form-group">
     <label for="formGroupExampleInput2">Couleur</label>
-    <input type="text" class="form-control" name="pro_couleur" id="couleur" value="<?php echo $produit->pro_couleur; ?>"placeholder="">
+    <input type="text" class="form-control" name="pro_couleur" id="couleur" value="<?php echo set_value('pro_couleur', $produit->pro_couleur); ?>"placeholder="">
     <?php echo form_error('pro_couleur');?>
 
 </div>
 
 <div class="form-group">
-    <label for="formGroupExampleInput2">Extension</label>
-    <input type="text" class="form-control" name="pro_photo" id="photo" value="<?php echo $produit->pro_photo; ?>"placeholder="Ex: jpg, png, ...">
+    <label for="formGroupExampleInput2">Photo</label>
+    <input type="file" name="pro_photo" id="pro_photo" class="form-control" >
     <?php echo form_error('pro_photo');?>
-
 </div>
+
+<!-- <div class="form-group">
+    <label for="formGroupExampleInput2">Date d'ajout</label>
+    <input type="date" class="form-control" name="date_ajout" id="date_ajout" placeholder="jj-mm-aaaa">
+    <span id="error_date_ajout"></span>
+</div> -->
+<!-- <div class="form-group">
+    <label for="formGroupExampleInput2">Date de modification</label>
+    <input type="date" class="form-control" name="date_modif" id="date_modif" placeholder="jj-mm-aaaa">
+    <span id="error_date_modif"></span>
+</div> -->
+
+<!-- je defini des valeurs 1 et 0 pour ma mention bloque, ainsi je peux avoir un choix et oui et non pour mes produits au moment de choisir -->
+<!-- <div class="form-check form-check-inline mb-3 font">
+    <label class="form-check-label" for="inlineCheckbox2">Voulez vous bloquer ce produit?</label>
+</div>
+
+  <div class="form-check form-check-inline">
+      <input class="radI form-check-input ml-1 mb-3" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1"> <!-- Value = 1 -->
+      <!-- <label class="radI form-check-label ml-2 mb-2" for="inlineRadio1"><h5 class="largContact2">Oui</h5></label> <!-- Value = 0 -->
+  <!-- </div>
+  <div class="form-check form-check-inline mb-3">
+      <input class="radI form-check-input ml-5 mb-3" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0" checked>
+      <label class="radI form-check-label ml-2 mb-2" for="inlineRadio1"><h5 class="largContact2">Non </h5></label>
+  </div> -->
 <!-- si je veux que ma mention bloqué ait une valeur numerique je fais ce qui suit -->
 <div class="form-group">
     <label for="formGroupExampleInput2">Bloquer Produit</label>
-    <input type="texte" class="form-control" name="pro_bloque" value="<?php echo $produit->pro_bloque; ?>"id="bloque">
+    <input type="texte" class="form-control" name="pro_bloque" value="<?php echo set_value('pro_bloque',$produit->pro_bloque); ?>"id="bloque">
     <?php echo form_error('pro_bloque');?>
 
 
@@ -119,7 +145,8 @@ $title ='Produits';
       <div class="modal-footer">
         <input type="hidden" name="DeleteButton" value="<?php echo $produit->pro_id; ?>"> <!-- Bouton caché avec la valeur de pro_id -->
         <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-        <input type="submit" class="btn btn-primary" value="Supprimer Produit">
+        <!-- <input type="submit" class="btn btn-primary" value="Supprimer Produit"> -->
+        <a href="<?= site_url("produits/supprimer/".$produit->pro_id); ?>" role="button" >Supprimer</a>
       </div>
     </div>
   </div>
