@@ -131,7 +131,9 @@
       if(!empty ($_SESSION['rank'])) {
           echo "<p class='text-light'>Welcome, ".$_SESSION['username']."</p>";
       }?>
+      <a href="<?= site_url('panier/afficherPanier');?>"> <i class="fas fa-shopping-cart"></i>Panier</a>
     </div>
   </nav>
   <img src="<?= base_url('assets/img/promotion.jpg'); ?>" class="img-fluid">
+  
 </header>

@@ -57,12 +57,9 @@
             $aviewCategories['categories'] = $aCategories;
             if ($this->input->post()) 
             { // 2ème appel de la page: traitement du formulaire
-<<<<<<< HEAD
                 
-                $data = $this->input->post(NULL, TRUE); //permet de récupérer en une seule fois toutes les données envoyées par le formulaire. Equivaut au tableau $_POST en PHP natif.
-=======
-                $data = $this->input->post(); //permet de récupérer en une seule fois toutes les données envoyées par le formulaire. Equivaut au tableau $_POST en PHP natif.
->>>>>>> 79c1a2357ab3952c230bd60bdc797681ef4b7ac6
+                $data = $this->input->post(NULL, TRUE); 
+                //permet de récupérer en une seule fois toutes les données envoyées par le formulaire. Equivaut au tableau $_POST en PHP natif.
                 
                 // ------------------------------ IMPORTANT ------------------------------
                 // L'utilisation de $this->db->insert('produits', $data); nécessite que le nom des colonnes que le nom des colonnes soit identiques aux attributs "name"
