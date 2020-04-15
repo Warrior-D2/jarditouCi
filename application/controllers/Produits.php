@@ -49,8 +49,11 @@
         public function ajouter()
         {
 
-            $resultats = $this->db->query("SELECT DISTINCT cat_nom, cat_id FROM categories LEFT JOIN produits ON cat_id = pro_cat_id");  
-            $aCategories = $resultats->result();
+            // Chargement du modèle 'Produits_model'
+            $this->load->model('Produits_model');
+            //on attribue à la variable le resultat de la requete
+            $aCategories = $this->Produits_model->categorie();    
+            
             $aviewCategories['categories'] = $aCategories;
             if ($this->input->post()) 
             { // 2ème appel de la page: traitement du formulaire
@@ -97,7 +100,10 @@
                 else // if ($this->form_validation->run() == TRUE)
                 { // La validation a réussi, nos valeurs sont bonnes, on peut insérer en base
                     
-                    $this->db->insert('produits', $data); //génère et exécute une requête insert, le tableau $data contient les paramètres de la requête.
+                    // Chargement du modèle 'Produits_model'
+                    $this->load->model('Produits_model');
+                    //execution de la requete insert
+                    $this->Produits_model->ajouter($data);
                     
                     /********************************************Gestion de la photos*******************************/
                     if ($_FILES) 
@@ -126,7 +132,6 @@
                     }
                     else
                     { // Succès, on redirige sur la liste 
-                        $this->db->insert('produits', $data); //génère et exécute une requête insert, le tableau $data contient les paramètres de la requête.
                         redirect("produits/liste"); //redirige le navigateur vers la méthode liste du contrôleur produits. La méthode redirect() est disponible via le helper url.
                     }
                 }     
@@ -140,9 +145,10 @@
         /*--------- Modif produits --------- */
         public function modifier($id)
         {
-        // Requête de sélection de l'enregistrement souhaité, ici le produit 7 
-        $produit = $this->db->query("SELECT * FROM produits WHERE pro_id= ?", $id);
-        $aView["produit"] = $produit->row(); // première ligne du résultat
+            // Chargement du modèle 'Produits_model'
+            $this->load->model('Produits_model');
+            //execution de  la requete select avec l'id du produit
+            $aView["produit"] = $this->Produits_model->produitId($id);
 
         if ($this->input->post()) 
         { // 2ème appel de la page: traitement du formulaire
@@ -199,9 +205,10 @@
                 }
                 else
                 { // Succès, on redirige sur la liste 
-                    $this->db->where('pro_id', $id );
-                    //unset($data['pro_id']);
-                    $this->db->update('produits', $data); //génère et exécute une requête update, le tableau $data contient les paramètres de la requête.
+                    // Chargement du modèle 'Produits_model'
+                    $this->load->model('Produits_model');
+                    //execution de la requete update
+                    $this->Produits_model->modifier($data, $id);
                     redirect("produits/liste"); //redirige le navigateur vers la méthode liste du contrôleur produits. La méthode redirect() est disponible via le helper url.
                 }
             }
@@ -216,17 +223,15 @@
         /*--------- supprimer un produit --------- */
     public function supprimer($id)
     {
-        // requete pour récupérer l'extension dans la base dde données
-        $result = $this->db->query("SELECT pro_photo from produits WHERE pro_id= ?", $id);
-        //la requete nous renvoie un tableau
-        $tab_extension = $result->row();
-        //on récupere l'extension
-        $extension = $tab_extension->pro_photo;
+        // Chargement du modèle 'Produits_model'
+        $this->load->model('Produits_model');
+        // on recupere l'extention de la photo via la requete
+        $extension = $this->Produits_model->extension($id);
         //on supprime la photo dans le dossier
         unlink("assets/img/".$id.".".$extension);
         //on execute la requete de suppression
-        $this->db->where('pro_id', $id);
-        $this->db->delete('produits');
+        $this->load->model('Produits_model');
+        $this->Produits_model->supprimer($id);
         //on redirige vers la liste des produits
         redirect("produits/liste");
     }
