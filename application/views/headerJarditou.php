@@ -24,28 +24,28 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <?php 
-        if (isset($_SESSION["role"]))
+        if (isset($_SESSION["rank"]))
         { 
-          if ($_SESSION["role"] == "utilisateur" && $_SESSION['verif'] == 1)
+          if ($_SESSION["rank"] == 0)
           {?>  <!-- je defini les pages que l'utilisateur peut voir selon son role dans la base de données -->
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="Jarditou3.php" title= "Accueil">Accueil<span class="sr-only">(current)</span></a>
             </li>
-          <?php }else if ($_SESSION["role"] == "admin"){ ?>    
+          <?php }else if ($_SESSION["rank"] == 1){ ?>    
           <!--si l'utilisateur est admin il ne verra pas la page d'accueil car le else est vide, jepourrais créer une page d'erreur connexion -->
           <?php }  
         } 
         else 
         {?>
-          <li class="nav-item active">
+          <li class="nav-item">
               <a class="nav-link" href="<?= site_url(); ?>" title= "Accueil">Accueil<span class="sr-only">(current)</span></a>
           </li>
         <?php } ?>
 
         <?php 
-        if (isset($_SESSION["role"]))
+        if (isset($_SESSION["rank"]))
         {
-          if ($_SESSION["role"] == "admin")
+          if ($_SESSION["rank"] == 1)
           {?>
             <li class="nav-item">
                 <a class="nav-link" href="tableau.php">Produits</a>
@@ -55,7 +55,7 @@
             </li>
           <?php 
           } 
-          else if ($_SESSION["role"] == "utilisateur")
+          else if ($_SESSION["rank"] == 0)
           {?>
             <li class="nav-item">
                 <a class="nav-link" href="produits_user.php">Produits</a>
@@ -70,10 +70,10 @@
         <?php } 
 
         // Condition accès page contact
-        if (isset($_SESSION["role"]))
+        if (isset($_SESSION["rank"]))
         {
 
-          if ($_SESSION["role"] == "utilisateur")
+          if ($_SESSION["rank"] == 0)
           {?>
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>
@@ -86,9 +86,9 @@
         }?>
 
         <?php 
-        if (isset($_SESSION["role"]))
+        if (isset($_SESSION["rank"]))
         {
-          if ($_SESSION["role"] == "admin")
+          if ($_SESSION["rank"] == 1)
           {?>
             <li class="nav-item">
                 <a class="nav-link" href="fiche_produit.php">Admin</a>
@@ -106,19 +106,19 @@
 
 
         <?php 
-        if (isset($_SESSION["role"]))
+        if (isset($_SESSION["rank"]))
         {
-          if ($_SESSION["role"] == "utilisateur" || $_SESSION["role"] == "admin")
+          if ($_SESSION["rank"] == 0 || $_SESSION["rank"] == 1)
           {?>
             <li class="nav-item">
-              <a class="nav-link" href="logout.php">Deconnexion</a>
+              <a class="nav-link" href="<?= site_url('users/deconnexion'); ?>">Deconnexion</a>
             </li>
           <?php } 
           }
           else
           {?>
             <li class="nav-item">
-              <a class="nav-link" href="inscription.php">Connexion</a>
+              <a class="nav-link" href="<?= site_url('users/index'); ?>">Connexion</a>
             </li>
           <?php } ?>
 
@@ -128,8 +128,8 @@
         </span>
     
       <?php
-      if(!empty ($_SESSION['login'])) {
-          echo "<p class= text-light>Welcome, ".$_SESSION['login']."</p>";
+      if(!empty ($_SESSION['rank'])) {
+          echo "<p class='text-light'>Welcome, ".$_SESSION['username']."</p>";
       }?>
     </div>
   </nav>

@@ -5,7 +5,7 @@ $title ='Produits';
 <?php ob_start(); ?>
 
     <!-- ******************************Produits********************************* -->
-    <h1 id="ttlpage" class="col-4 offset-4 mb-5">Produits</h1>
+    <h1 id="ttlpage" class="text-center mb-3 mt-3">Produits</h1>
     <!--------------Tableau------------->
     <?php foreach ($liste_produits as $row) { ?> <!-- Aller chercher -->
 
@@ -19,14 +19,9 @@ $title ='Produits';
                     </h2>
                     <p class="prixTab col-4 text-center"><?php echo $row->pro_prix . "€"; ?></p>
                     <!-- Test -->
-                    <a href="<?= site_url('produits/modifier/'.$row->pro_id)?>">Modif</a>
-
-
-                    <!-- <form class="marque col-4 text-center" href="<?= site_url('produits/modifier')?>" method="post">
-                        <input type="hidden" name="proID" value="<?php echo $row->pro_id; ?>">
-                        <!-- je met un bouton hidden pour recup les infos en fonction de l'id  que j'ai choisi et qui recuperera sa valeur <<
-                        <input class="btn btn-link" type="submit" name="Detail" value="modifier">
-                    </form> -->
+                    <div class="col-4 text-center">
+                        <a href="<?= site_url('produits/modifier/'.$row->pro_id)?>">Modifier</a>
+                    </div>
                 </div>
                 <div id="collapse<?php echo $row->pro_id; ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="row card-body">

@@ -240,4 +240,5 @@
         //on redirige vers la liste des produits
         redirect("produits/liste");
     }
+
 }
