@@ -38,6 +38,28 @@ $title ='Produits';
                             <ins class="refTab row">Bloqué : <?php echo $row->pro_bloque; ?></ins>
                             <ins class="descTab row">Description</ins>
                             <ins class="desc2Tab row"><?php echo $row->pro_description; ?></ins>
+
+
+                            <?php 
+                            /* Pour chaque produit, on ouvre un formulaire qui appellera 
+                            * la méthode 'panier/ajouterPanier' 
+                            * ... oh oh oh! ça sent la boucle...  
+                            */
+                            echo form_open("Panier/ajouterPanier"); 
+                            ?>
+
+                            <!-- champ visible pour indiquer la quantité à commander -->
+                            <input type="number" class="form-control" name="pro_qte" id="pro_qte" value="1">
+                            <input type="hidden" name="pro_prix" id="pro_prix" value="<?= $row->pro_prix ?>">
+                            <input type="hidden" name="pro_id" id="pro_id" value="<?= $row->pro_id ?>">
+                            <input type="hidden" name="pro_libelle" id="pro_libelle" value="<?= $row->pro_libelle ?>">
+
+                            <!-- Bouton 'Ajouter au panier' -->
+                            <div class="form-group">
+                                <input type="submit" value="Ajouter au panier" class="btn btn-default btn-sm">            
+                            </div>
+                            </form>
+
                         </p>
                     </div>
                 </div>
@@ -47,5 +69,6 @@ $title ='Produits';
     <?php } ?> <!--fin while -->
 
 <?php $content = ob_get_clean(); ?>
+
 
 <?php require('template.php'); ?>
