@@ -45,7 +45,7 @@ $title ='Produits';
                             * la méthode 'panier/ajouterPanier' 
                             * ... oh oh oh! ça sent la boucle...  
                             */
-                            echo form_open("Panier/ajouterPanier"); 
+                            echo form_open("panier/ajouterPanier"); 
                             ?>
 
                             <!-- champ visible pour indiquer la quantité à commander -->

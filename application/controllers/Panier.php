@@ -7,12 +7,12 @@
     class Panier extends CI_Controller 
     {
         public function afficherPanier()
-        { // vous cassez les couilles 
+        { 
             $this->load->view("panier");
         }
-        public function ajouter()
-        {
 
+        public function ajouterPanier()
+        {
             // On récupère les données du formulaire 
             $aData = $this->input->post();  
 
@@ -28,7 +28,7 @@
                 // On stocke le panier dans une variable de session nommée 'panier'            
                 $this->session->set_userdata("panier", $aPanier);
 
-                // 
+                $this->load->view('panier', $aPanier);
             }
             else
             { // le panier existe (on a déjà mis au moins un article) 
@@ -60,9 +60,9 @@
                 { // sinon, le produit est ajouté dans le panier
                     array_push($aPanier, $aData);
 
-                    // On remet le tableau des produitss que  
+                    // On remet le tableau des produits que  
                     $this->session->panier = $aPanier;
-                    $this->load->view('produits/liste', $aView);
+                    $this->load->view('liste');
 
                     // On redirige sur la liste
                     redirect("produits/liste");
