@@ -39,7 +39,12 @@ $title ='Jarditou : Panier';
                         <tr>
                             <td><?= $row['pro_libelle']; ?></td>
                             <td><?= $row['pro_prix'] ;?></td>
-                            <td><input type="number" value="<?= $row['pro_qte']; ?>"></td>
+                            <td>
+                                <a href="<?= site_url('panier/diminiuerQuantite/'.$row['pro_id']); ?>"><i class="fas fa-minus-circle"></i></a>
+                                <?= $row['pro_qte']; ?>
+                                <a href="<?= site_url('panier/augmenterQuantite/'.$row['pro_id']); ?>"><i class="fas fa-plus-circle"></i></a>
+                                <a href="<?= site_url('panier/supprimerProduit/'.$row['pro_id']); ?>"><i class="fas fa-skull-crossbones"></i></a>
+                            </td>
                             <td> <?= $totalRow = $row['pro_prix']*$row['pro_qte']; ?></td>
                         </tr>
                         <?php $iTotal += $totalRow; ?>
@@ -54,7 +59,7 @@ $title ='Jarditou : Panier';
                 <h3 class="text-center">Récapitulatif</h3>
                 <div>
                     <p class="text-center">TOTAL : <?= str_replace('.', ',' , $iTotal); ?> &euro;</p>
-                    <p><a href="<?= site_url("panier/afficherPanier"); ?>">Supprimer le panier</a></p> 
+                    <p>Supprimer le panier : <a href="<?= site_url('panier/supprimerPanier'); ?>"><i class="fas fa-skull-crossbones"></i></a></p>
                     <p><a href="<?= site_url("produits/liste"); ?>">Retour liste des produits</a></p>
                 </div>
             </div>
