@@ -56,7 +56,7 @@ $title ='Produits';
 
                             <!-- Bouton 'Ajouter au panier' -->
                             <div class="form-group">
-                                <input type="submit" value="Ajouter au panier" class="btn btn-default btn-sm">            
+                                <input type="submit" value="Ajouter au panier" class="btn btn-primary btn-sm">            
                             </div>
                             </form>
 

@@ -51,10 +51,10 @@ $title ='Jarditou : Panier';
                 </table>
             </div>
             <div class="col-12">
-                <h3>Récapitulatif</h3>
+                <h3 class="text-center">Récapitulatif</h3>
                 <div>
-                    <p>TOTAL : <?= str_replace('.', ',' , $iTotal); ?> &euro;</p>
-                    <p><a href="<?= site_url("panier/supprimerPanier"); ?>">Supprimer le panier</a></p> 
+                    <p class="text-center">TOTAL : <?= str_replace('.', ',' , $iTotal); ?> &euro;</p>
+                    <p><a href="<?= site_url("panier/afficherPanier"); ?>">Supprimer le panier</a></p> 
                     <p><a href="<?= site_url("produits/liste"); ?>">Retour liste des produits</a></p>
                 </div>
             </div>
