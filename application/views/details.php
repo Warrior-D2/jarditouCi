@@ -9,7 +9,7 @@ $title ='Produits';
 
 <div class="form-group">
     <label for="formGroupExampleInput">ID</label>
-    <input type="text" class="form-control" name="pro_id"id="pro_id" value="<?php  echo set_value('pro_id' $produit->pro_id); ?>" placeholder="" readonly>
+    <input type="text" class="form-control" name="pro_id"id="pro_id" value="<?php  echo set_value('pro_id', $produit->pro_id); ?>" placeholder="" readonly>
   </div>
 
 <div class="form-group">

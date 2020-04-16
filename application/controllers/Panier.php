@@ -28,7 +28,7 @@
                 // On stocke le panier dans une variable de session nommée 'panier'            
                 $this->session->set_userdata("panier", $aPanier);
 
-                $this->load->view('panier', $aPanier);
+                $this->load->view('tableau');
             }
             else
             { // le panier existe (on a déjà mis au moins un article) 
@@ -62,12 +62,102 @@
 
                     // On remet le tableau des produits que  
                     $this->session->panier = $aPanier;
-                    $this->load->view('liste');
+                    // $this->load->view('liste');
 
                     // On redirige sur la liste
                     redirect("produits/liste");
                 }
             }
+        }
+        // *---------* Fonction modifier un produits du panier
+        public function augmenterQuantite($pro_id)
+        {
+            $aPanier = $this->session->panier;
+        
+            $aTemp = array(); //création d'un tableau temporaire vide
+        
+            // On parcourt le tableau produit après produit
+            for ($i = 0; $i < count($aPanier); $i++) 
+            {
+                if ($aPanier[$i]['pro_id'] !== $pro_id) 
+                // on compare le pro_id du produit que l'on veut augmenter aux autres produits dans le panier
+                {
+                    array_push($aTemp, $aPanier[$i]);
+                    // Si il est différent alors on l'insère dans le tableau
+                }
+                else //si il est identique
+                {
+                    $aPanier[$i]['pro_qte']++; // on augmenter la quantité
+                    array_push($aTemp, $aPanier[$i]); // Puis on l'ajoute au tableau
+                }
+            }
+        
+            $aPanier = $aTemp; //on attribu à $aPanier le nouveau tableau
+            unset($aTemp); // On supprimer la variable inutile $aTemp
+            $this->session->set_userdata("panier", $aPanier); // On modifie la variable session en attribuant le nouveau tableau avec la fonction set_userdate()
+        
+            // On réaffiche le panier 
+            redirect("panier/afficherPanier");
+        }
 
+        public function diminiuerQuantite($pro_id)
+        {
+            $aPanier = $this->session->panier;
+            
+            $aTemp = array(); //création d'un tableau temporaire vide
+            
+            // On parcourt le tableau produit après produit
+            for ($i = 0; $i < count($aPanier); $i++) 
+            {
+                if ($aPanier[$i]['pro_id'] !== $pro_id)
+                {
+                    array_push($aTemp, $aPanier[$i]);
+                }
+                else
+                {
+                    $aPanier[$i]['pro_qte']--; // on diminue la quantité
+                    array_push($aTemp, $aPanier[$i]);
+                }
+            }
+            
+            $aPanier = $aTemp;
+            unset($aTemp);
+            $this->session->set_userdata("panier", $aPanier);
+            
+            // On réaffiche le panier 
+            redirect("panier/afficherPanier");
+        }
+
+        public function supprimerProduit($pro_id)
+        {
+            $aPanier = $this->session->panier;
+            $aTemp = array(); //création d'un tableau temporaire vide
+            
+            for ($i=0; $i<count($aPanier); $i++) //on cherche dans le panier les produits à ne pas supprimer
+            {
+                if ($aPanier[$i]['pro_id'] !== $pro_id) // ici, le produit dont le pro_id mis en paramètre de la méthode ne sera jamais ajouté dans le tableau
+                {
+                    array_push($aTemp, $aPanier[$i]); // ces produits sont ajoutés dans le tableau temporaire
+                }
+            }
+            
+            $aPanier = $aTemp;
+            unset($aTemp);
+            
+            $this->session->panier = $aPanier; // le panier prend la valeur du tableau temporaire et ne contient donc plus le produit à supprimer
+            
+            // On réaffiche le panier 
+            redirect("panier/afficherPanier");
+        }
+
+        public function supprimerPanier()
+        {
+            $aPanier = $this->session->panier;
+            $aTemp = array(); //création d'un tableau temporaire vide        
+            $aPanier = $aTemp; // On attribue un tableau vide
+            unset($aTemp);
+            $this->session->panier = $aPanier; // On attribue à la variable session $aPanier qui est vide.
+            // On réaffiche le panier 
+            redirect("panier/afficherPanier");
         }
     }
